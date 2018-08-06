@@ -1,0 +1,44 @@
+This is a simple guideline on running our system, we will enrich the document and open source our code with entire benchmark as soon as possible.
+
+0. Requirements
+
+Python 3.6
+
+Python packages
+tensorflow==1.0.0
+Jinja2==2.9.5
+MarkupSafe==0.23
+numpy==1.12.0
+protobuf==3.2.0
+six==1.10.0
+tensorflow-gpu==1.0.0
+tqdm==4.11.2
+nltk==3.2.1
+
+1. Data
+
+We provide two small datasets of our QA4IE benchmark in the folder "data/".
+
+2. Preprocessing
+
+Run the preprocessing code at prepro_span.py and prepro_seq.py in the folder "code/squad/" to preprocess these two files. You need to make sure the file path are correct in the code.
+
+3. Train
+
+To train our model in default settings, run:
+
+python -m basic.cli --mode train --len_opt --cluster --run_id QA4IE
+
+You may need to fix the problem on file path. Additional settings can be found in "code/basic/cli.py"
+
+4. Test
+
+To test, run:
+
+python -m basic.cli --run_id QA4IE
+
+5. Evaluate
+
+To evaluate, run:
+
+python squad/evaluate-v1.1.py <file dir of groundtruth> <file dir of test result>
